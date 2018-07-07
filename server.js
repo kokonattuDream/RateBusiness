@@ -12,6 +12,8 @@ const app = express();
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/rateapp',{ useNewUrlParser: true });
 
+require('./passport/passport-local')
+
 app.use(cors());
 
 app.use((req, res, next) => {
