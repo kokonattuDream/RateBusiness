@@ -1,4 +1,16 @@
+const passport = require('passport');
+
 
 exports.createUser = (req, res, next) => {
-    console.log(req.body)
+    passport.authenticate('local-signup', (err, user, info) =>{
+        if(err){
+            return res.status(500).json({error: err});
+        }
+
+        if(info){
+            return res.status(400).json({error: info});
+        }
+
+        return res.status(201).json({message: 'User successfully created', user: user});
+    })(req, res, next);
 }

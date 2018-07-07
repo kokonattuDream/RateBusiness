@@ -1,6 +1,6 @@
 const User = require('../models/user');
 const passport = require('passport');
-const LocalStrategy = require('passport').Strategy;
+const LocalStrategy = require('passport-local').Strategy;
 
 passport.use('local-signup', new LocalStrategy({
     usernameField: 'email',
@@ -22,13 +22,17 @@ passport.use('local-signup', new LocalStrategy({
         }
 
         const newUser = new User();
+       
         newUser.fullname = req.body.fullname;
         newUser.email = req.body.email;
         newUser.password = newUser.encryptPassword(req.body.password);
 
-        newUser.save((err) => {
-            return done(null. newUser);
+        console.log(newUser.fullname);
+
+        newUser.save().then(function(user){
+            return done(null, user);
         })
+        
     });
 }));
 
