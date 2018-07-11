@@ -40,8 +40,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 const user = require('./routes/userRoute');
+const company = require('./routes/companyRoute');
 
 app.use('/api', user);
+app.use('/api', company);
 
 app.listen(3000, () => {
     console.log("server running on port 3000");
