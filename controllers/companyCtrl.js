@@ -28,3 +28,10 @@ exports.createCompany = async (req, res) => {
     return res.status(200).json({message: 'Company created successfully'});
 
 }
+
+
+exports.getAllCompanies = async (req, res) => {
+    const results = await Company.find({});
+
+    return res.status(200).json({result: results});
+}
