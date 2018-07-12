@@ -1,5 +1,5 @@
 const passport = require('passport');
-
+const User = require('../models/user');
 
 exports.createUser = (req, res, next) => {
 
@@ -45,4 +45,10 @@ exports.loginUser = (req, res, next) => {
 
         return res.status(200).json({message: 'User successfully logined', user: user});
     })(req, res, next);
+}
+
+exports.homePage = async (req, res) => {
+    const result = await User.findOne({'email': req.params.email});
+
+    return res.status(200).json({user: result });
 }

@@ -6,6 +6,7 @@ const companySchema = mongoose.Schema({
     city: {type: String, default: ''},
     sector: {type: String, default: ''},
     website: {type: String, default: ''},
+    admin: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     imageId: {type: String, default: ''},
     imageVersion: {type: String, default: ''}
 });
