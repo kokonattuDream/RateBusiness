@@ -35,3 +35,7 @@ exports.getAllCompanies = async (req, res) => {
 
     return res.status(200).json({result: results});
 }
+
+exports.addReview = async (req, res) => {
+    
+}
