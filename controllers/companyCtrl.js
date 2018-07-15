@@ -37,6 +37,12 @@ exports.getAllCompanies = async (req, res) => {
 }
 
 exports.addReview = async (req, res) => {
+
+    if(req.body.culture === '' || req.body.benefits === '' || req.body.balance === '' 
+        || req.body.speed === '' || req.body.review === '' || req.body.overall === ''){
+            return res.status(200).json({error: 'No empty fields allowed'});
+    }
+
     const company = await Company.update({
         "_id": req.body.companyId,
     },{
