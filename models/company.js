@@ -8,7 +8,22 @@ const companySchema = mongoose.Schema({
     website: {type: String, default: ''},
     admin: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     imageId: {type: String, default: ''},
-    imageVersion: {type: String, default: ''}
+    imageVersion: {type: String, default: ''},
+    rating:[{
+        user: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
+        culture: {type: Number, default: 0},
+        benefits: {type: Number, default: 0},
+        balance: {type: Number, default: 0},
+        speed: {type: Number, default: 0},
+        review: {type: String, default: ''},
+        created: {type: Date, default: Data.now}
+    }],
+    totalStars: {type:Number, default:0},
+    ratingOverall:[Number],
+    cultureData: [Number],
+    benefitTotal: [Number],
+    balanceTotal: [Number],
+    speedTotal: [Number]
 });
 
 module.exports = mongoose.model('Company', companySchema);
