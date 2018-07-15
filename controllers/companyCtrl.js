@@ -23,7 +23,15 @@ exports.createCompany = async (req, res) => {
     newCompany.website = req.body.website;
     newCompany.admin = req.body.userId;
 
-    const company = await newCompany.save();
+    const companyData = await newCompany.save();
+
+    await User.update({
+        '_id': req.body.userId
+        },{
+        $push:{companies:{
+            company: companyData._id
+        }}
+    });
 
     return res.status(200).json({message: 'Company created successfully'});
 
