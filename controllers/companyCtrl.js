@@ -70,3 +70,23 @@ exports.addReview = async (req, res) => {
 
     return res.status(200).json({message: 'Review added successfully'});
 }
+
+exports.addEmployee = async(req, res) => {
+    
+    await Company.update({
+        '_id': req.body.company._id,
+        'employees.employee': {$ne: req.body.user._id}
+    }, {
+        $push: {employees: {
+            employee: req.body.user._id
+        }}
+    });
+
+    await User.update({
+        '_id': req.body.user._id,
+    }, {
+        role: req.body.role
+    });
+
+    return res.status(200).json({message: 'Role added successfully.'});
+}
