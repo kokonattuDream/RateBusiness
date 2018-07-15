@@ -37,5 +37,24 @@ exports.getAllCompanies = async (req, res) => {
 }
 
 exports.addReview = async (req, res) => {
-    
+    const company = await Company.update({
+        "_id": req.body.companyId,
+    },{
+        $push: {rating: {
+            user: req.body.userId,
+            culture: req.body.culture,
+            benefits: req.body.benefits,
+            balance: req.body.balance,
+            speed: req.body.speed,
+            review: req.body.review
+        },
+            ratingOverall: req.body.overall,
+            cultureTotal: req.body.culture,
+            benefitTota: req.body.balance,
+            speedTotal: req.body.speed
+        },
+        $inc: {totalStarts: req.body.overall}
+    });
+
+    return res.status(200).json({message: 'Review added successfully'});
 }
