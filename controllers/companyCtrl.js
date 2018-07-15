@@ -43,6 +43,11 @@ exports.addReview = async (req, res) => {
             return res.status(200).json({error: 'No empty fields allowed'});
     }
 
+    if(req.body.culture === undefined || req.body.benefits === undefined || req.body.balance === undefined 
+        || req.body.speed === undefined || req.body.review === undefined || req.body.overall === undefined){
+            return res.status(200).json({error: 'No empty fields allowed'});
+    }
+
     const company = await Company.update({
         "_id": req.body.companyId,
     },{
