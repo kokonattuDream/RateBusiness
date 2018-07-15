@@ -16,6 +16,7 @@ const companySchema = mongoose.Schema({
         balance: {type: Number, default: 0},
         speed: {type: Number, default: 0},
         review: {type: String, default: ''},
+        userOverall: {type: Number, default: 0},
         created: {type: Date, default: Date.now}
     }],
     totalStars: {type:Number, default:0},

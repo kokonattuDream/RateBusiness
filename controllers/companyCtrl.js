@@ -31,7 +31,7 @@ exports.createCompany = async (req, res) => {
 
 
 exports.getAllCompanies = async (req, res) => {
-    const results = await Company.find({});
+    const results = await Company.find({}).populate("rating.user");
 
     return res.status(200).json({result: results});
 }
@@ -57,7 +57,8 @@ exports.addReview = async (req, res) => {
             benefits: req.body.benefits,
             balance: req.body.balance,
             speed: req.body.speed,
-            review: req.body.review
+            review: req.body.review,
+            userOverall: req.body.overall
         },
             ratingOverall: req.body.overall,
             cultureTotal: req.body.culture,
