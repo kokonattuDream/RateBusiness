@@ -1,4 +1,4 @@
-const User = require('../models.user');
+const User = require('../models/user');
 const Company = require('../models/company');
 const cloudinary = require('cloudinary');
 
@@ -24,6 +24,26 @@ exports.addImage = async (req, res) =>{
         savedData()
             .then(res => {
                 return res.status(200).json({message: 'Profile image upload'});
+            })
+    });
+}
+
+exports.addLogo = async (req, res) =>{
+    cloudinary.uploader.upload(req.body.image, (result) => {
+        const savedData = async() => {
+            if(req.body.image){
+                await Company.update({
+                    '_id':req.body.company
+                },{
+                    "imageId": result.public_id,
+                    "imageVersion": result.version
+                });
+            }
+        }
+
+        savedData()
+            .then(res => {
+                return res.status(200).json({message: 'Company Logo upload'});
             })
     });
 }
