@@ -46,6 +46,7 @@ exports.getAllCompanies = async (req, res) => {
 
 exports.addReview = async (req, res) => {
 
+    console.log(req.body);
     if(req.body.culture === '' || req.body.benefits === '' || req.body.balance === '' 
         || req.body.speed === '' || req.body.review === '' || req.body.overall === ''){
             return res.status(200).json({error: 'No empty fields allowed'});
@@ -73,14 +74,14 @@ exports.addReview = async (req, res) => {
             benefitTota: req.body.balance,
             speedTotal: req.body.speed
         },
-        $inc: {totalStarts: req.body.overall}
+        $inc: {totalStars: req.body.overall}
     });
 
     return res.status(200).json({message: 'Review added successfully'});
 }
 
-exports.addEmployee = async(req, res) => {
-    
+exports.addEmployee = async (req, res) => {
+    console.log(req.body);
     await Company.update({
         '_id': req.body.company._id,
         'employees.employee': {$ne: req.body.user._id}

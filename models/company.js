@@ -4,13 +4,14 @@ const companySchema = mongoose.Schema({
     companyname: {type: String},
     address: {type: String, default: ''},
     city: {type: String, default: ''},
+    country: {type: String, default: ''},
     sector: {type: String, default: ''},
     website: {type: String, default: ''},
-    admin: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+    admin: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     imageId: {type: String, default: ''},
     imageVersion: {type: String, default: ''},
-    rating:[{
-        user: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
+    rating: [{
+        user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
         culture: {type: Number, default: 0},
         benefits: {type: Number, default: 0},
         balance: {type: Number, default: 0},
@@ -19,10 +20,10 @@ const companySchema = mongoose.Schema({
         userOverall: {type: Number, default: 0},
         created: {type: Date, default: Date.now}
     }],
-    totalStars: {type:Number, default:0},
-    ratingOverall:[Number],
-    cultureData: [Number],
-    benefitTotal: [Number],
+    totalStars: {type: Number, default: 0},
+    ratingOverall: [Number],
+    cultureTotal: [Number],
+    benefitsTotal: [Number],
     balanceTotal: [Number],
     speedTotal: [Number],
     employees: [{
