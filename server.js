@@ -41,6 +41,7 @@ app.use(passport.session());
 
 const user = require('./routes/userRoute');
 const company = require('./routes/companyRoute');
+const file = require('./routes/fileRoute');
 
 app.use('/api', user);
 app.use('/api', company);
