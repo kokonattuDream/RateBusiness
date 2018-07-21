@@ -6,5 +6,5 @@ router.get('/companies/all', CompanyCtrl.getAllCompanies);
 router.post('/company/create', CompanyCtrl.createCompany);
 router.post('/company/review', CompanyCtrl.addReview);
 router.post('/register/employee', CompanyCtrl.addEmployee);
-
+router.post('/search-company', CompanyCtrl.search)
 module.exports = router;

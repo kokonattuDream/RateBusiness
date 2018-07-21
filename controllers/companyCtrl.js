@@ -99,3 +99,7 @@ exports.addEmployee = async (req, res) => {
 
     return res.status(200).json({message: 'Role added successfully.'});
 }
+
+exports.search = async (req, res) => {
+    console.log(req.body);
+}
