@@ -8,12 +8,3 @@ Install mongoDB locally
 Start the back-end API locally
 1. npm install
 2. npm start
-
-Go To https://github.com/kokonattuDream/RateBusinessUI and clone the repository
-1. ionic serve --lab -c
-
-Run in ios
-1. ionic cordova run ios
-
-Run in Android
-1. ionic cordova run android
